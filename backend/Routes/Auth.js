@@ -135,7 +135,6 @@ router.post('/foodData', async (req, res) => {
 
         const fooditem = await foodItems.find({})
         const foodCat = await foodCategory.find({})
-        console.log(foodCat, fooditem)
         res.send([fooditem, foodCat])
     } catch (error) {
         console.error(error.message)
@@ -184,12 +183,13 @@ router.post('/orderData', async (req, res) => {
 
 router.post('/myOrderData', async (req, res) => {
     try {
-        console.log(req.body.email)
-        let eId = await Order.findOne({ 'email': req.body.email })
+        const mail= req.body.email
+        console.log(mail)
+        let eId = await Order.findOne({ 'email': mail })
         //console.log(eId)
         res.json({orderData:eId})
     } catch (error) {
-        res.send("Error",error.message)
+        console.log("error")
     }
     
 

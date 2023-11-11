@@ -15,7 +15,6 @@ export default function Home() {
       },
     });
     response = await response.json();
-    console.log(response)
     setFoodItems(response[0]);
     setFoodCat(response[1]);
   };
@@ -119,8 +118,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   searchInput: {
-    flex: 1,
-    width:250,
+    width:280,
     backgroundColor: 'white',
     color: 'black',
     padding: 10,
@@ -165,7 +163,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   heading:{
-    fontSize:40,
+    fontSize:50,
     fontWeight:'bold',
     paddingBottom: 20,
     color:'white'

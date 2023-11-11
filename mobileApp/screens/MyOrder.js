@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, Image, StyleSheet } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function MyOrder() {
   const [orderData, setOrderData] = useState([]);
 
   const fetchMyOrder = async () => {
-    console.log(localStorage.getItem('userEmail'));
+    const myMail= await AsyncStorage.getItem('userEmail');
+
     const response = await fetch("http://foodwinzo.vercel.app/api/auth/myOrderData", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: localStorage.getItem('userEmail'),
+        email: myMail,
       }),
     });
     const data = await response.json();
@@ -21,7 +23,7 @@ export default function MyOrder() {
       setOrderData([data]);
     }
   };
-
+  
   useEffect(() => {
     fetchMyOrder();
   }, []);
@@ -36,8 +38,8 @@ export default function MyOrder() {
                 <View key={arrayData.id}>
                   {arrayData.Order_date ? (
                     <View style={styles.dateContainer}>
-                      <Text style={styles.dateText}>{arrayData.Order_date}</Text>
                       <View style={styles.hrLine}></View>
+                      <Text style={styles.dateText}>{arrayData.Order_date}</Text>
                     </View>
                   ) : (
                     <View style={styles.cardContainer}>
@@ -87,9 +89,11 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     marginVertical: 10,
+    justifyContent:"center",
+    alignItems:"center"
   },
   card: {
-    width: 160,
+    width: 300,
     height: 220,
     borderRadius: 10,
     overflow: 'hidden',

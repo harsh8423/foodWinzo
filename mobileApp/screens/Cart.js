@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
 import { useDispatchCart, useCart } from '../components/ContextReducer';
 import { MaterialIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Cart() {
   const data = useCart();
@@ -18,7 +19,7 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     try {
-      const userEmail = await localStorage.getItem('userEmail');
+      const userEmail = await AsyncStorage.getItem('userEmail');
   
       const response = await fetch('http://foodwinzo.vercel.app/api/auth/orderData', {
         method: 'POST',

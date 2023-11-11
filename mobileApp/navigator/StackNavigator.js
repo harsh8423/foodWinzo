@@ -34,19 +34,15 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
           );
         } else if (route.name === "Cart") {
           icon = isFocused ? (
-            <MaterialIcons name="message" size={24} color="green" />
+            <Entypo name="shopping-cart" size={24} color="green" />
           ) : (
-            <MaterialCommunityIcons
-              name="message-text-outline"
-              size={24}
-              color="black"
-            />
+            <AntDesign name="shoppingcart" size={24} color="black" />
           );
         } else if (route.name === "MyOrder") {
           icon = isFocused ? (
-            <Ionicons name="ios-people-sharp" size={24} color="green" />
+            <MaterialIcons name="view-list" size={24} color="green" />
           ) : (
-            <Ionicons name="ios-people-outline" size={24} color="black" />
+            <MaterialIcons name="list-alt" size={24} color="black" />
           );
         }
         const onPress = () => {
@@ -78,7 +74,6 @@ const CustomTabBar = ({ state, descriptors, navigation }) => {
   );
 };
 
-
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
   const Tab = createBottomTabNavigator();
@@ -86,7 +81,11 @@ const StackNavigator = () => {
   function BottomTab() {
     return (
       <Tab.Navigator tabBar={(props) => <CustomTabBar {...props} />}>
-        <Tab.Screen name="Home" component={Home}  options={{ headerShown: false }}/>
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
         <Tab.Screen name="Cart" component={Cart} />
         <Tab.Screen name="MyOrder" component={MyOrder} />
       </Tab.Navigator>
@@ -96,8 +95,12 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Tab.Screen
+          name="Main"
+          component={BottomTab}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="Login" component={Login} />
-        <Tab.Screen name="Main" component={BottomTab} options={{ headerShown: false }} />
         <Stack.Screen name="Signup" component={Signup} />
       </Stack.Navigator>
     </NavigationContainer>
@@ -111,9 +114,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white",
     color: "green",
-    height: 80,
-    borderTopRightRadius: 40,
-    borderTopLeftRadius: 40,
+    height: 70,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
     borderColor: "green",
     borderWidth: 2,
   },
@@ -131,7 +134,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
- 
 });
 
 export default StackNavigator;
