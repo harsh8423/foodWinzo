@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const { Schema } = mongoose;
 
-const OrderSchema = new Schema({
+const categorySchema = new Schema({
     email: {
         type: String,
         required: true,
@@ -15,4 +15,4 @@ const OrderSchema = new Schema({
 
 });
 
-module.exports = mongoose.model('order', OrderSchema)
+module.exports = mongoose.model('order', categorySchema)

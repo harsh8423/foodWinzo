@@ -1,10 +1,5 @@
 
-global.foodData = require('./db')(function call(err, data, CatData) {
-  if(err) console.log(err);
-  global.foodData = data;
-  global.foodCategory = CatData;
-})
-
+const db = require("./db")
 const cors = require("cors");
 const express = require('express')
 const app = express()
@@ -12,7 +7,7 @@ const port = 5000
 
 const allowedOrigins = [
   "http://localhost:19006",
-  "http://192.168.0.167:8081"
+  "http://192.168.0.167:8081",
   // Add more origins as needed
 ];
 
