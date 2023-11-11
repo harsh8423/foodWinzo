@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, TextInput, Image, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import Card from '../components/Card';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function Home() {
   const [foodCat, setFoodCat] = useState([]);
@@ -100,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   carouselItems: {
-    width: '100%',
+    width: 450,
     height: 200,
   },
   carouselCaption: {
@@ -136,10 +139,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   carouselImage: {
-    width: '100%',
-    height: '100%',
+    height:200,
     resizeMode: 'cover',
-    filter: 'brightness(30%)',
   },
   categoryContainer: {
     paddingHorizontal: 10,
@@ -155,7 +156,6 @@ const styles = StyleSheet.create({
   },
   hrLine: {
     height: 4,
-    width: '100%',
     backgroundImage: '-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))',
   },
   cardContainer: {

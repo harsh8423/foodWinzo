@@ -3,6 +3,7 @@ import Cart from "../screens/Cart";
 import MyOrder from "../screens/MyOrder";
 import Signup from "../screens/Signup";
 import Login from "../screens/Login";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
@@ -12,8 +13,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
 
 // Custom Tab Bar Component
 const CustomTabBar = ({ state, descriptors, navigation }) => {

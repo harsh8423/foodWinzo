@@ -3,6 +3,7 @@ import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
 import { useDispatchCart, useCart } from '../components/ContextReducer';
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Cart() {
   const data = useCart();
