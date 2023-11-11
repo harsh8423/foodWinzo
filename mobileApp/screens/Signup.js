@@ -26,7 +26,7 @@ export default function Signup({ navigation }) {
       const { latitude, longitude } = location.coords;
       console.log(latitude, longitude);
 
-      const response = await fetch('http://localhost:5000/api/auth/getlocation', {
+      const response = await fetch('http://foodwinzo.vercel.app/api/auth/getlocation', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export default function Signup({ navigation }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/createuser', {
+      const response = await fetch('http://foodwinzo.vercel.app/api/auth/createuser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

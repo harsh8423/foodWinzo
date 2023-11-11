@@ -20,7 +20,7 @@ export default function Cart() {
     try {
       const userEmail = await localStorage.getItem('userEmail');
   
-      const response = await fetch('http://localhost:5000/api/auth/orderData', {
+      const response = await fetch('http://foodwinzo.vercel.app/api/auth/orderData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
