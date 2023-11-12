@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Alert } from 'react-native';
-import * as Location from 'expo-location';
 
 export default function Signup({ navigation }) {
   const [credentials, setCredentials] = useState({ name: '', email: '', password: '', geolocation: '' });
