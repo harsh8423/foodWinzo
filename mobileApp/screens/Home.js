@@ -10,6 +10,8 @@ export default function Home() {
   const [foodItems, setFoodItems] = useState([]);
   const [search, setSearch] = useState('');
 
+  const navigation= useNavigation();
+
   const loadFoodItems = async () => {
     let response = await fetch("http://foodwinzo.vercel.app/api/auth/foodData", {
       method: 'POST',
@@ -22,7 +24,20 @@ export default function Home() {
     setFoodCat(response[1]);
   };
 
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
 
+        if (!token) {
+          navigation.navigate('Main');
+        }
+      } catch (err) {
+        console.log("error message", err);
+      }
+    };
+    checkLoginStatus();
+  }, []);
 
   useEffect(() => {
     loadFoodItems();

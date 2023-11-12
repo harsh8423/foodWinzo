@@ -39,21 +39,6 @@ export default function Login({ navigation }) {
   };
 
 
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const token = await AsyncStorage.getItem("token");
-
-        if (token) {
-          navigation.navigate('Main');
-        }
-      } catch (err) {
-        console.log("error message", err);
-      }
-    };
-    checkLoginStatus();
-  }, []);
-
   return (
     <ImageBackground
       source={{ uri: 'https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' }}
