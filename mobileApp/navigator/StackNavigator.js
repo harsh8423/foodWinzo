@@ -94,12 +94,12 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} />
         <Tab.Screen
           name="Main"
           component={BottomTab}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Signup" component={Signup} />
       </Stack.Navigator>
     </NavigationContainer>

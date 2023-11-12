@@ -6,43 +6,7 @@ import * as Location from 'expo-location';
 export default function Signup({ navigation }) {
   const [credentials, setCredentials] = useState({ name: '', email: '', password: '', geolocation: '' });
   const [address, setAddress] = useState('');
-  const [location, setLocation] = useState(null);
 
-  useEffect(() => {
-    // Request location permission when the component mounts
-    getLocationPermission();
-  }, []);
-
-  const getLocationPermission = async () => {
-    const { status } = await Location.requestForegroundPermissionsAsync();
-    if (status !== 'granted') {
-      Alert.alert('Permission Denied', 'Please enable location services to use this feature.');
-    }
-  };
-
-  const handleClick = async () => {
-    try {
-      const location = await Location.getCurrentPositionAsync();
-      const { latitude, longitude } = location.coords;
-      console.log(latitude, longitude);
-
-      const response = await fetch('http://foodwinzo.vercel.app/api/auth/getlocation', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ latlong: { lat: latitude, long: longitude } }),
-      });
-
-      const { location: fetchedLocation } = await response.json();
-      console.log(fetchedLocation);
-
-      setAddress(fetchedLocation);
-      setCredentials({ ...credentials, geolocation: fetchedLocation });
-    } catch (error) {
-      console.error('Error getting location:', error);
-    }
-  };
 
   const handleSubmit = async () => {
     try {
@@ -106,15 +70,6 @@ export default function Signup({ navigation }) {
             />
           </View>
           <View style={styles.formGroup}>
-            <Text style={styles.label}>Address</Text>
-            <TextInput
-              style={styles.input}
-              value={address}
-              onChangeText={(text) => setAddress(text)}
-              placeholder='"Click below for fetching address"'
-            />
-          </View>
-          <View style={styles.formGroup}>
             <TouchableOpacity style={styles.button} onPress={handleClick} name="geolocation">
               <Text style={styles.buttonText}>Click for current Location</Text>
             </TouchableOpacity>
@@ -143,7 +98,7 @@ export default function Signup({ navigation }) {
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: '100%',
+    height: 900,
     resizeMode: 'cover',
   },
   container: {
@@ -152,8 +107,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   form: {
-    width: '80%',
-    margin: 'auto',
+    width: 280,
     marginTop: 50,
     padding: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',

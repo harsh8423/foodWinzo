@@ -128,7 +128,6 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   card: {
-    width: "auto",
     maxHeight: 360,
     backgroundColor: "#fff",
     borderRadius: 10,

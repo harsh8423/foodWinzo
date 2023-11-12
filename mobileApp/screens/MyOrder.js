@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   hrLine: {
     height: 4,
-    width: '100%',
+    width: 400,
     backgroundColor: 'black',
   },
   cardContainer: {
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   cardImage: {
-    width: '100%',
+    width: 450,
     height: 120,
     resizeMode: 'cover',
   },

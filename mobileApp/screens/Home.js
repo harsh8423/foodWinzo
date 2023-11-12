@@ -22,20 +22,7 @@ export default function Home() {
     setFoodCat(response[1]);
   };
 
-  useEffect(() => {
-    const checkLoginStatus = async () => {
-      try {
-        const token = await AsyncStorage.getItem("token");
 
-        if (!token) {
-          navigation.navigate('Login');
-        }
-      } catch (err) {
-        console.log("error message", err);
-      }
-    };
-    checkLoginStatus();
-  }, []);
 
   useEffect(() => {
     loadFoodItems();
@@ -156,7 +143,6 @@ const styles = StyleSheet.create({
   },
   hrLine: {
     height: 4,
-    backgroundImage: '-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))',
   },
   cardContainer: {
     flex: 1,

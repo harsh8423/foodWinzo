@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from "@react-navigation/native";
@@ -37,6 +37,22 @@ export default function Login({ navigation }) {
   const onChange = (name, value) => {
     setCredentials({ ...credentials, [name]: value });
   };
+
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const token = await AsyncStorage.getItem("token");
+
+        if (token) {
+          navigation.navigate('Main');
+        }
+      } catch (err) {
+        console.log("error message", err);
+      }
+    };
+    checkLoginStatus();
+  }, []);
 
   return (
     <ImageBackground
@@ -82,7 +98,7 @@ export default function Login({ navigation }) {
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    height: '100%',
+    height: 900,
     resizeMode: 'cover',
   },
   container: {
@@ -91,8 +107,7 @@ const styles = StyleSheet.create({
     alignItems:"center"
   },
   form: {
-    width: '80%',
-    margin: 'auto',
+    width: 250,
     marginTop: 50,
     padding: 20,
     backgroundColor: 'rgba(0, 0, 0, 0.7)',
