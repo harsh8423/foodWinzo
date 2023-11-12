@@ -13,7 +13,7 @@ export default function Home() {
   const navigation= useNavigation();
 
   const loadFoodItems = async () => {
-    let response = await fetch("http://foodwinzo.vercel.app/api/auth/foodData", {
+    let response = await fetch("https://foodwinzo.vercel.app/api/auth/foodData", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

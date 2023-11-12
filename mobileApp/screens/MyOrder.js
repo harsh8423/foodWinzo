@@ -8,7 +8,7 @@ export default function MyOrder() {
   const fetchMyOrder = async () => {
     const myMail= await AsyncStorage.getItem('userEmail');
 
-    const response = await fetch("http://foodwinzo.vercel.app/api/auth/myOrderData", {
+    const response = await fetch("https://foodwinzo.vercel.app/api/auth/myOrderData", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

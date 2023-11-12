@@ -22,7 +22,7 @@ export default function Cart() {
     try {
       const userEmail = await AsyncStorage.getItem('userEmail');
   
-      const response = await fetch('http://foodwinzo.vercel.app/api/auth/orderData', {
+      const response = await fetch('https://foodwinzo.vercel.app/api/auth/orderData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

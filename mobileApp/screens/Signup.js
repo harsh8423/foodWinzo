@@ -9,7 +9,7 @@ export default function Signup({ navigation }) {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://foodwinzo.vercel.app/api/auth/createuser', {
+      const response = await fetch('https://foodwinzo.vercel.app/api/auth/createuser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

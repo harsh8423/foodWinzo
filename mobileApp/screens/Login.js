@@ -3,12 +3,13 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, A
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from "@react-navigation/native";
 
-export default function Login({ navigation }) {
+export default function Login() {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const navigation= useNavigation()
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch("http://foodwinzo.vercel.app/api/auth/login", {
+      const response = await fetch("https://foodwinzo.vercel.app/api/auth/login", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,6 +38,8 @@ export default function Login({ navigation }) {
   const onChange = (name, value) => {
     setCredentials({ ...credentials, [name]: value });
   };
+
+  const handleSingup = () => navigation.navigate('Signup')
 
 
   return (
@@ -71,7 +74,7 @@ export default function Login({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.submitButton, { backgroundColor: 'red' }]}
-            onPress={() => navigation.navigate('Signup')}
+            onPress={handleSingup}
           >
             <Text style={styles.submitButtonText}>New User</Text>
           </TouchableOpacity>
