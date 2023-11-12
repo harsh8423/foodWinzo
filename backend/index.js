@@ -5,21 +5,11 @@ const express = require('express')
 const app = express()
 const port = 5000
 
-const allowedOrigins = [
-  "http://localhost:19006",
-  "http://192.168.0.167:8081",
-  // Add more origins as needed
-];
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
-
+app.use(cors());
 
 app.use(express.json())
+
+
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

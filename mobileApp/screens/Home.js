@@ -19,10 +19,13 @@ export default function Home() {
         'Content-Type': 'application/json',
       },
     });
-    response = await response.json();
-    setFoodItems(response[0]);
-    setFoodCat(response[1]);
+    const data = await response.json();
+    setFoodItems(data[0]);
+    setFoodCat(data[1]);
   };
+  useEffect(() => {
+    loadFoodItems();
+  }, []);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -30,7 +33,7 @@ export default function Home() {
         const token = await AsyncStorage.getItem("token");
 
         if (!token) {
-          navigation.navigate('Main');
+          navigation.navigate('Login');
         }
       } catch (err) {
         console.log("error message", err);
@@ -39,9 +42,6 @@ export default function Home() {
     checkLoginStatus();
   }, []);
 
-  useEffect(() => {
-    loadFoodItems();
-  }, []);
 
   return (
     <ScrollView style={styles.container}>

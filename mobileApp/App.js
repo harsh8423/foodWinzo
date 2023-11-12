@@ -1,7 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
 import React from "react";
-import { AppRegistry } from 'react-native';
-
+import { AppRegistry} from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { registerRootComponent } from "expo";
 import StackNavigator from "./navigator/StackNavigator";
 import {CartProvider} from "./components/ContextReducer"
@@ -12,7 +11,7 @@ AppRegistry.registerComponent(appName, () => App);
 export default function App() {
   return (
     <CartProvider>
-        <StatusBar style={{color:"green"}}/>
+        <StatusBar style="auto" backgroundColor="green" color="white" />
         <StackNavigator />
     </CartProvider>
   );

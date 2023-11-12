@@ -135,7 +135,7 @@ router.post('/foodData', async (req, res) => {
 
         const fooditem = await foodItems.find({})
         const foodCat = await foodCategory.find({})
-        res.send([fooditem, foodCat])
+        res.json([fooditem, foodCat])
     } catch (error) {
         console.error(error.message)
         res.send("Server Error")
